@@ -29,14 +29,60 @@ body {
 }
 /* Main rules */
 
+/* Informations icon styling */
+.informations {
+    position: absolute;
+    top: 20px;
+    right: 30px
+}
+.icon-content-container {position: relative}
+.informations-icon {
+    color: white;
+    border: 1px solid white;
+    padding: 3px 7px;
+    border-radius: 50%;
+    font-size: 13px;
+    box-shadow: 0 0 4px white;
+}
+.informations-content {
+    position: absolute;
+    top: 0;
+    left: -210px;
+    width: 200px;
+    padding: 10px;
+    background-color: white;
+    opacity: .8;
+    z-index: 5;
+    display: none
+}
+.show-info {display: block}
+.informations-content p {
+    text-align: center;
+    line-height: 1.4;
+    font-weight: 300
+}
+.informations-content p span {
+    color: var(--sec-color);
+    font-weight: 500
+}
+.informations:hover .informations-content, 
+.informations:hover .icon-content-container::before {display: block}
+@media (max-width: 500px) {
+    .informations {
+        top: 40px;
+        right: 15px
+    }
+    .informations-content p {font-size: 14px}
+}
+/* Informations icon styling */
+
 /* Game styling */
 .game {
-    height: calc(100vh - 58.4px);
-    margin: 0 auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center
 }
 .msg {
     margin-bottom: 10px;
@@ -60,8 +106,8 @@ body {
 .players-score p span {margin-left: 5px;}
 @media (max-width: 500px)  {
     .msg {font-size: 13px}
-    .players-score {width: 330px;}
-    .players-score p{font-size: 20px;}
+    .players-score {width: 330px}
+    .players-score p{font-size: 20px}
     .players-score p span {margin-left: 0}
 }
 .fields-container {
@@ -294,18 +340,6 @@ body {
 }
 .reset:active {transform: scale(95%)}
 .btn-animation {animation: scale .7s infinite alternate ease-in-out}
-footer {
-    padding: 20px;
-    background-color: var(--game-back-color);
-}
-footer p {
-    color: #FFF;
-    text-align: center
-}
-footer p span {
-    color:#fd7f2a;
-    font-weight: bold
-}
 /* Game styling */
 
 /* Animations */

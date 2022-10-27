@@ -2,6 +2,7 @@ const fieldsContainer = document.querySelector('#fields-container');
 const fields = document.querySelectorAll('#field');
 const resetBtn = document.querySelector('#reset-board');
 const resetScores = document.querySelector('#reset-scores');
+const showInfo = document.querySelector('#info');
 const score1 = document.querySelector('#score-1');
 const score2 = document.querySelector('#score-2');
 const gameStatusMsg = document.querySelector('#game-status-msg');
@@ -35,7 +36,7 @@ function filling(click){
     }
 }
 function addingAnimationForWinner (line,animationType){
-    window.setTimeout(function (){
+    setTimeout(function (){
         document.getElementById(line).classList.add(animationType);
     },100)
 }
@@ -154,3 +155,7 @@ function resetScore (){
 fieldsContainer.onclick = GameActions;
 resetBtn.onclick = resetValues;
 resetScores.onclick = resetScore;
+
+showInfo.onclick = function (){
+    document.querySelector('#info-content').classList.toggle('show-info')
+}
