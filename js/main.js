@@ -156,6 +156,13 @@ fieldsContainer.onclick = GameActions;
 resetBtn.onclick = resetValues;
 resetScores.onclick = resetScore;
 
-showInfo.onclick = function (){
-    document.querySelector('#info-content').classList.toggle('show-info')
+showInfo.onmouseenter = function (){
+    document.querySelector('#info-content').classList.add('show-info')
 }
+showInfo.onmouseleave = function (){
+    document.querySelector('#info-content').classList.remove('show-info')
+}
+showInfo.addEventListener('touchstart', function (){
+    document.querySelector('#info-content').classList.toggle('show-info')
+
+})
