@@ -5,7 +5,7 @@ const resetScores = document.querySelector('#reset-scores');
 const score1 = document.querySelector('#score-1');
 const score2 = document.querySelector('#score-2');
 const gameStatusMsg = document.querySelector('#game-status-msg');
-gameStatusMsg.innerHTML = 'Player (X) turn';
+gameStatusMsg.innerHTML = 'Player (X) Turn';
 const lines = document.querySelectorAll('.line');
 
 const player1 = 'x';
@@ -25,56 +25,60 @@ function filling(click){
         if(playerTurn === true){
             click.target.innerHTML = player1;
             playerTurn = false;
-            gameStatusMsg.innerHTML = 'Player (O) turn'
+            gameStatusMsg.innerHTML = 'Player (O) Turn'
         }
         else if(playerTurn === false) {
             click.target.innerHTML = player2;
             playerTurn = true;
-            gameStatusMsg.innerHTML = 'Player (X) turn'
+            gameStatusMsg.innerHTML = 'Player (X) Turn'
         }
     }
 }
-
+function addingAnimationForWinner (line,animationType){
+    window.setTimeout(function (){
+        document.getElementById(line).classList.add(animationType);
+    },100)
+}
 function checkForWinner (){
     if(fields[0].innerHTML === fields[1].innerHTML && fields[0].innerHTML === fields[2].innerHTML && fields[0].innerHTML !== ''){
         win = true;
         stopPlaying = true;
-        document.getElementById('line4').classList.add('horizontal-active');
+        addingAnimationForWinner('line4','horizontal-active');
     }
     else if(fields[3].innerHTML === fields[4].innerHTML && fields[3].innerHTML === fields[5].innerHTML && fields[3].innerHTML !== ''){
         win = true;
         stopPlaying = true;
-        document.getElementById('line5').classList.add('horizontal-active');
+        addingAnimationForWinner('line5','horizontal-active');
     }
     else if(fields[6].innerHTML === fields[7].innerHTML && fields[6].innerHTML === fields[8].innerHTML && fields[6].innerHTML !== ''){
         win = true;
         stopPlaying = true;
-        document.getElementById('line6').classList.add('horizontal-active');
+        addingAnimationForWinner('line6','horizontal-active');
     }
     else if(fields[0].innerHTML === fields[3].innerHTML && fields[0].innerHTML === fields[6].innerHTML && fields[0].innerHTML !== ''){
         win = true;
         stopPlaying = true;
-        document.getElementById('line1').classList.add('verticale-active');
+        addingAnimationForWinner('line1','verticale-active');
     }
     else if(fields[1].innerHTML === fields[4].innerHTML && fields[1].innerHTML === fields[7].innerHTML && fields[1].innerHTML !== ''){
         win = true;
         stopPlaying = true;
-        document.getElementById('line2').classList.add('verticale-active');
+        addingAnimationForWinner('line2','verticale-active');
     }
     else if(fields[2].innerHTML === fields[5].innerHTML && fields[2].innerHTML === fields[8].innerHTML && fields[2].innerHTML !== ''){
         win = true;
         stopPlaying = true;
-        document.getElementById('line3').classList.add('verticale-active');
+        addingAnimationForWinner('line3','verticale-active');
     }
     else if(fields[0].innerHTML === fields[4].innerHTML && fields[0].innerHTML === fields[8].innerHTML && fields[0].innerHTML !== ''){
         win = true;
         stopPlaying = true;
-        document.getElementById('line7').classList.add('diagonal-active');
+        addingAnimationForWinner('line7','diagonal-active');
     }
     else if(fields[2].innerHTML === fields[4].innerHTML && fields[2].innerHTML === fields[6].innerHTML && fields[2].innerHTML !== ''){
         win = true;
         stopPlaying = true;
-        document.getElementById('line8').classList.add('diagonal-active');
+        addingAnimationForWinner('line8','diagonal-active');
     }
 }
 
@@ -101,12 +105,12 @@ function increasingScores (){
         if(playerTurn === false){
             playerScore1++;
             score1.innerHTML = playerScore1;
-            gameStatusMsg.innerHTML = 'Player (X) won!'
+            gameStatusMsg.innerHTML = 'Player (X) Won!'
         }
         else if(playerTurn === true){
             playerScore2++;
             score2.innerHTML = playerScore2;
-            gameStatusMsg.innerHTML = 'Player (O) won!'
+            gameStatusMsg.innerHTML = 'Player (O) Won!'
         }
     }
 }
@@ -131,7 +135,7 @@ function resetValues (){
     win = false;
     draw = false;
     stopPlaying = false;
-    gameStatusMsg.innerHTML = 'Player 1 turn';
+    gameStatusMsg.innerHTML = 'Player (X) Turn';
     resetBtn.classList.remove('btn-animation');
     for(let i = 0 ; i < lines.length ; i++){
         lines[i].classList.remove('verticale-active');

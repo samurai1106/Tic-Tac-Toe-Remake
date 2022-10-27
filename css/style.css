@@ -11,31 +11,39 @@
     --back-color: #256D85;
     --game-back-color: #06283D;
     --line-color: #47B5FF;
-    --sec-color: #F66B0E
+    --sec-color: #F66B0E;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 body {
     font-family: 'Nunito' , 'Open Sans', Arial;
     background-color: var(--back-color);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 /* Main rules */
 
 /* Game styling */
 .game {
-    margin-top: 2%;
+    height: calc(100vh - 58.4px);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    /* width: 100% */
 }
 .msg {
+    margin-bottom: 10px;
     color: white;
-    letter-spacing: 0.5px;
     font-weight: 500;
-    text-shadow: 0 0 7px white
+    text-shadow: 0 0 10px white;
+    letter-spacing: 0.5px
 }
 .players-score {
     width: 430px;
@@ -46,19 +54,20 @@ body {
 .players-score p {
     color: #FFF;
     font-size: 22px;
-    text-shadow: 0 0 10px #FFF
+    text-shadow: 0 0 10px #FFF;
+    letter-spacing: 0.5px
 }
 .players-score p span {margin-left: 5px;}
-@media (max-width: 767px)  {
-    .msg {font-size: 15px}
+@media (max-width: 500px)  {
+    .msg {font-size: 13px}
     .players-score {width: 330px;}
-    .players-score p{font-size: 18px;}
+    .players-score p{font-size: 20px;}
     .players-score p span {margin-left: 0}
 }
-.game-container {
-    margin-top: 15px;
-    height: 460px;
-    width: 430px;
+.fields-container {
+    height: 450px;
+    width: 450px;
+    margin-top: 8px;
     background-color: var(--game-back-color);
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -67,156 +76,138 @@ body {
     padding: 20px;
     position: relative
 }
-@media (max-width: 767px)  {
-    .game-container {
+@media (max-width: 500px)  {
+    .fields-container {
         height: 360px;
-        width: 330px
+        width: 360px
     }
 }
 /* win lines */
     /* verticale lines */
-.game-container .verticale {
-    width : 8px;
-    height: 360px;
+.fields-container .verticale {
+    width : 7px;
+    height: calc(100% - 60px);
     background-color: var(--sec-color);
     box-shadow: 0 0 10px var(--sec-color);
-    border-radius: 6px
-}
-.game-container .verticale1 {
+    border-radius: 6px;
     position: absolute;
-    top: 49px;
-    left: 78px;
+    top: 30px;
+}
+.fields-container .verticale1 {
+    left: 81px;
     display: none
 }
-.game-container .verticale2 {
-    position: absolute;
-    top: 49px;
-    left: 211px;
+.fields-container .verticale2 {
+    left: calc(50% - 1px);
+    transform: translateX(-50%);
     display: none
 }
-.game-container .verticale3 {
-    position: absolute;
-    top: 49px;
-    right: 77px;
+.fields-container .verticale3 {
+    right: 81px;
     display: none
 }
-.game-container .verticale-active {
+.fields-container .verticale-active {
     display: block;
-    animation: verticale-win .5s ease
+    animation: verticale-win .4s ease;
 }
-@media (max-width: 767px)  {
-    .game-container .verticale {
+@media (max-width: 500px)  {
+    .fields-container .verticale {
         width : 6px;
-        height: 290px;
     }
-    .game-container .verticale1 {
-        top: 34px;
-        left: 62px;
+    .fields-container .verticale1 {
+        left: 67px;
     }
-    .game-container .verticale2 {
-        top: 34px;
-        left: 163px;
+    .fields-container .verticale2 {
+        left: 50%;
+        transform: translateX(-50%)
     }
-    .game-container .verticale3 {
-        top: 34px;
-        right: 62px;
+    .fields-container .verticale3 {
+        right: 67px;
     }
 }
     /* horizontal lines */
-.game-container .horizontal {
-    width : 335px;
-    height: 8px;
+.fields-container .horizontal {
+    width : calc(100% - 60px);
+    height: 7px;
     background-color: var(--sec-color);
     box-shadow: 0 0 10px var(--sec-color);
-    border-radius: 6px
-}
-.game-container .horizontal1 {
+    border-radius: 6px;
     position: absolute;
-    top: 80px;
-    left: 47px;
+    left: 30px
+}
+.fields-container .horizontal1 {
+    top: 79px;
     display: none
 }
-.game-container .horizontal2 {
-    position: absolute;
-    top: 225px;
-    left: 47px;
+.fields-container .horizontal2 {
+    top: calc(50% - 3px);
+    transform: translateY(-50%);
     display: none
 }
-.game-container .horizontal3 {
-    position: absolute;
-    bottom: 85px;
-    left: 47px;
+.fields-container .horizontal3 {
+    bottom: 83px;
     display: none
 }
-.game-container .horizontal-active {
+.fields-container .horizontal-active {
     display: block;
-    animation: horizontal-win .5s ease
+    animation: horizontal-win .4s ease
 }
-@media (max-width: 767px)  {
-    .game-container .horizontal {
-        width : 250px;
+@media (max-width: 500px)  {
+    .fields-container .horizontal {
         height: 6px;
     }
-    .game-container .horizontal1 {
-        top: 64px;
-        left: 41px;
+    .fields-container .horizontal1 {
+        top: 65px;
     }
-    .game-container .horizontal2 {
-        top: 175px;
-        left: 41px;
-    }
-    .game-container .horizontal3 {
+    .fields-container .horizontal3 {
         bottom: 69px;
-        left: 41px;
     }
 }
     /* diagonale lines */
-.game-container .diagonal {
-    width : 495px;
-    height: 8px;
+.fields-container .diagonal {
+    width : 515px;
+    height: 7px;
     background-color: var(--sec-color);
     box-shadow: 0 0 10px var(--sec-color);
     border-radius: 6px
 }
-.game-container .diagonal1 {
+.fields-container .diagonal1 {
     position: absolute;
-    top: 40px;
-    left: 48px;
-    transform: rotate(48deg);
-    transform-origin: left;
+    top: 41px;
+    left: 41px;
+    transform: rotate(44deg);
+    transform-origin: top left;
     display: none
 }
-.game-container .diagonal2 {
+.fields-container .diagonal2 {
     position: absolute;
-    top: 40px;
-    right: 48px;
-    transform: rotate(-48deg);
-    transform-origin: right;
+    top: 41px;
+    right: 41px;
+    transform: rotate(-44deg);
+    transform-origin: top right;
     display: none
 }
-.game-container .diagonal-active {
+.fields-container .diagonal-active {
     display: block;
-    animation: diagonal-win .5s ease
+    animation: diagonal-win .4s ease
 }
-@media (max-width: 767px)  {
-    .game-container .diagonal {
-        width : 390px;
+@media (max-width: 500px)  {
+    .fields-container .diagonal {
+        width : 415px;
         height: 6px;
     }
-    .game-container .diagonal1 {
-        top: 30px;
-        left: 38px;
-        transform: rotate(48deg);
+    .fields-container .diagonal1 {
+        top: 33px;
+        left: 34px;
     }
-    .game-container .diagonal2 {
-        top: 30px;
-        right: 38px;
-        transform: rotate(-48deg);
+    .fields-container .diagonal2 {
+        top: 33px;
+        right: 34px;
     }
 }
 /* win lines */
 
-.game-container div{
+.fields-container div{
     color: var(--sec-color);
     font-size: 90px;
     text-transform: uppercase;
@@ -227,21 +218,8 @@ body {
     align-items: center;
     cursor: pointer
 }
-@media (max-width: 767px)  {
-    .game-container div{font-size: 70px}
-}
-.game-container .line-right::before {
-    content: '';
-    background-color: var(--line-color);
-    width: 10px;
-    height: calc(100% + 10px);
-    position: absolute;
-    right: -10px;
-    top: -5px;
-    border-radius: 6px;
-    box-shadow: 0 0 5px var(--line-color)
-}
-.game-container .line-right-top::before {
+@media (max-width: 500px)  {.fields-container div{font-size: 70px}}
+.fields-container .line-right::before {
     content: '';
     background-color: var(--line-color);
     width: 10px;
@@ -252,18 +230,18 @@ body {
     border-radius: 6px;
     box-shadow: 0 0 10px var(--line-color)
 }
-.game-container .line-right-top::after {
+.fields-container .line-right-top::before {
     content: '';
     background-color: var(--line-color);
-    width: calc(100% + 10px);
-    height: 10px;
+    width: 10px;
+    height: calc(100% + 10px);
     position: absolute;
-    left: -5px;
-    top: -10px;
+    right: -10px;
+    top: -5px;
     border-radius: 6px;
-    box-shadow: 0 0 5px var(--line-color)
+    box-shadow: 0 0 10px var(--line-color)
 }
-.game-container .line-top::after {
+.fields-container .line-right-top::after {
     content: '';
     background-color: var(--line-color);
     width: calc(100% + 10px);
@@ -272,7 +250,28 @@ body {
     left: -5px;
     top: -10px;
     border-radius: 6px;
-    box-shadow: 0 0 5px var(--line-color)
+    box-shadow: 0 0 10px var(--line-color)
+}
+.fields-container .line-top::after {
+    content: '';
+    background-color: var(--line-color);
+    width: calc(100% + 10px);
+    height: 10px;
+    position: absolute;
+    left: -5px;
+    top: -10px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px var(--line-color)
+}
+@media (max-width: 500px) {
+    .fields-container .line-right::before,
+    .fields-container .line-right-top::before {
+        width: 7px;
+    }
+    .fields-container .line-right-top::after,
+    .fields-container .line-top::after {
+        height: 7px;
+    }
 }
 .btn-container {
     width: 430px;
@@ -291,24 +290,13 @@ body {
     border-radius: 4px;
     box-shadow: 0 0 10px var(--sec-color);
     cursor: pointer;
-    transition: .4s linear
+    transition: .1s linear
 }
 .reset:active {transform: scale(95%)}
 .btn-animation {animation: scale .7s infinite alternate ease-in-out}
 footer {
-    width: 100%;
     padding: 20px;
     background-color: var(--game-back-color);
-    position: absolute;
-    bottom: 0;
-    left: 0
-}
-@media (max-width: 767px)  {
-    footer {
-        position: absolute;
-        bottom: 0px;
-        left: 0
-    }
 }
 footer p {
     color: #FFF;
@@ -328,34 +316,23 @@ footer p span {
 /* win lines animation */
 @keyframes verticale-win {
     0% {height: 0}
-    100% {height: 360px}
+    100% {height: calc(100% - 60px)}
 }
 @keyframes horizontal-win {
     0% {width: 0}
-    100% {width: 335px}
+    100% {width: calc(100% - 60px)}
 }
 @keyframes diagonal-win {
     0% {width: 0}
-    100% {width: 495px}
+    100% {width: 515px}
 }
 
-    /* Phone size */
-@media (max-width: 767px)  {
-    @keyframes verticale-win {
-        0% {height: 0}
-        100% {height: 290px}
-    }
-    @keyframes horizontal-win {
-        0% {width: 0}
-        100% {width: 250px}
-    }
+@media (max-width: 500px) {
     @keyframes diagonal-win {
         0% {width: 0}
-        100% {width: 390px}
+        100% {width: 415px}
     }
 }
-    /* Phone size */
-
 /* win lines animation */
 
 /* Animations */
