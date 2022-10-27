@@ -17,6 +17,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Kumbh+Sans:wght@400;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="game">
+        <p id="game-status-msg" class="msg"></p>
+        <div class="players-score">
+            <p>Player (X) : <span id="score-1"></span></p>
+            <p>Player (O) : <span id="score-2"></span></p>
+        </div>
+        <div class="game-container" id="fields-container">
+            <div class="line-right" id="field"></div>
+            <div class="line-right" id="field"></div>
+            <div id="field"></div>
+
+            <div class="line-right-top" id="field"></div>
+            <div class="line-right-top" id="field"></div>
+            <div class="line-top" id="field"></div>
+
+            <div class="line-right-top" id="field"></div>
+            <div class="line-right-top" id="field"></div>
+            <div class="line-top" id="field"></div>
+
+            <!-- lines -->
+            <div class="line verticale verticale1" id="line1"></div>
+            <div class="line verticale verticale2" id="line2"></div>
+            <div class="line verticale verticale3" id="line3"></div>
+            <div class="line horizontal horizontal1" id="line4"></div>
+            <div class="line horizontal horizontal2" id="line5"></div>
+            <div class="line horizontal horizontal3" id="line6"></div>
+            <div class="line diagonal diagonal1" id="line7"></div>
+            <div class="line diagonal diagonal2" id="line8"></div>
+        </div>
+        <div class="btn-container">
+            <button class="reset" id="reset-board">Clear Board</button>
+            <button class="reset" id="reset-scores">Reset Scores</button>
+        </div>
+    </div>
+    <footer>
+        <p>Made By <span>Mohamed Yassine Lhachimi</span></p>
+    </footer>
     <script src="js/main.js"></script>
 </body>
 </html>
