@@ -167,13 +167,23 @@ function increasingScores (){
             playerScore1++;
             score1.innerHTML = playerScore1;
             win_draw_msg.firstElementChild.innerHTML = `Player (${player1.toUpperCase()}) Won!`;
-            win_draw_msg.children[1].innerHTML = `Player (${player2.toUpperCase()}) Will Play First Now`;
+            if(firstPlay === player1) {
+                win_draw_msg.children[1].innerHTML = `Player (${player2.toUpperCase()}) Will Play First Now`;
+            }
+            else if(firstPlay === player2) {
+                win_draw_msg.children[1].innerHTML = `Player (${player1.toUpperCase()}) Will Play First Now`;
+            }
         }
         else if(playerTurn === player1){
             playerScore2++;
             score2.innerHTML = playerScore2;
             win_draw_msg.firstElementChild.innerHTML = `Player (${player2.toUpperCase()}) Won!`;
-            win_draw_msg.children[1].innerHTML = `Player (${player1.toUpperCase()}) Will Play First Now`;
+            if(firstPlay === player1) {
+                win_draw_msg.children[1].innerHTML = `Player (${player2.toUpperCase()}) Will Play First Now`;
+            }
+            else if(firstPlay === player2) {
+                win_draw_msg.children[1].innerHTML = `Player (${player1.toUpperCase()}) Will Play First Now`;
+            }
         }
     }
 }
@@ -224,9 +234,11 @@ PlayAgainBtn.onclick = function (){
     resetValues()
     if(firstPlay === player1){
         firstPlay = player2;
+        playerTurn = firstPlay;
     }
     else if (firstPlay === player2){
         firstPlay = player1;
+        playerTurn = firstPlay;
     }
     gameStatusMsg.innerHTML = `Player (${firstPlay.toUpperCase()}) Turn`;
 }
