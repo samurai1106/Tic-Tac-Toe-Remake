@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Kumbh+Sans:wght@400;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="overlay" id="overlay"></div>
     <div class="informations" id="info">
         <div class="icon-content-container">
             <i class="fa-solid fa-info informations-icon"></i>
@@ -26,11 +27,22 @@
             </div>
         </div>
     </div>
+    <div class="game-menu" id="game-menu">
+        <h2>Hello Players !</h2>
+        <p>Player 1 Choose X or O :</p>
+        <button id="choosing-x">X</button>
+        <button id="choosing-o">O</button>
+    </div>
+    <div class="win-draw-msg" id="win-draw-msg">
+        <h2></h2>
+        <p></p>
+        <button id="play-again">Play Again</button>
+    </div>
     <div class="game">
         <p id="game-status-msg" class="msg"></p>
         <div class="players-score">
-            <p>Player (X) : <span id="score-1"></span></p>
-            <p>Player (O) : <span id="score-2"></span></p>
+            <p>Player (<span id="player1-letter"></span>) : <span id="score-1"></span></p>
+            <p>Player (<span id="player2-letter"></span>) : <span id="score-2"></span></p>
         </div>
         <div class="fields-container" id="fields-container">
             <div class="line-right" id="field"></div>

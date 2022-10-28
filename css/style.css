@@ -29,7 +29,18 @@ body {
     height: -webkit-fill-available;
     overflow: hidden;
 }
+button {border: none}
 /* Main rules */
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(0 0 0 / 60%);
+    z-index: 4;
+}
 
 /* Informations icon styling */
 .informations {
@@ -76,6 +87,81 @@ body {
 }
 /* Informations icon styling */
 
+/* Game menu Styling */
+.game-menu {
+    width: 500px;
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(255 255 255 / 80%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    z-index: 5;
+}
+.game-menu h2 {margin-bottom: 8px}
+.game-menu  p {
+    font-size: 19px;
+    font-weight: 500
+}
+.game-menu button {
+    padding: 5px 20px;
+    margin: 14px 15px 0 15px;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #e15a00;
+    color: white;
+    cursor: pointer;
+    transition: .3s
+}
+.game-menu button:hover {
+    background-color: var(--sec-color);
+}
+@media (max-width: 500px) {
+    .game-menu {width: 400px}
+    .game-menu button {background-color: var(--sec-color)}
+}
+/* Game menu Styling */
+
+/* Win or Draw msg Styling */
+.win-draw-msg {
+    width: 500px;
+    padding: 15px;
+    text-align: center;
+    background-color: rgb(255 255 255 / 80%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    z-index: 5;
+    display: none;
+}
+.win-draw-msg h2 {margin-bottom: 8px}
+.win-draw-msg p {
+    font-size: 19px;
+    font-weight: 500
+}
+.win-draw-msg button {
+    padding: 5px 20px;
+    margin-top: 15px;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #e15a00;
+    color: white;
+    cursor: pointer;
+    transition: .3s
+}
+.win-draw-msg button:hover {
+    background-color: var(--sec-color);
+}
+@media (max-width: 500px) {
+    .win-draw-msg {width: 400px}
+    .win-draw-msg button {background-color: var(--sec-color)}
+}
+/* Win or Draw msg Styling */
+
 /* Game styling */
 .game {
     height: 100vh;
@@ -103,7 +189,6 @@ body {
     text-shadow: 0 0 10px #FFF;
     letter-spacing: 0.5px
 }
-.players-score p span {margin-left: 5px;}
 @media (max-width: 500px)  {
     .msg {font-size: 13px}
     .players-score {width: 330px}
@@ -328,7 +413,6 @@ body {
 .reset {
     margin-top: 15px;
     background-color: var(--sec-color);
-    border: none;
     color: #FFF;
     padding: 7px 15px;
     font-weight: 600;
@@ -339,14 +423,10 @@ body {
     transition: .1s linear
 }
 .reset:active {transform: scale(95%)}
-.btn-animation {animation: scale .7s infinite alternate ease-in-out}
 /* Game styling */
 
 /* Animations */
-@keyframes scale {
-    0% {transform: scale(1)}
-    100% {transform: scale(110%)}
-}
+
 /* win lines animation */
 @keyframes verticale-win {
     0% {height: 0}
